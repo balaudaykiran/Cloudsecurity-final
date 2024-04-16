@@ -1,7 +1,7 @@
-resource "aws_security_group" "lab6_sg" {
-  name        = "lab6_sg"
+resource "aws_security_group" "my_sg" {
+  name        = "my_sg"
   description = "Remote SSH"
-  vpc_id      = aws_vpc.lab6_vpc.id
+  vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
     from_port   = 22
@@ -12,12 +12,12 @@ resource "aws_security_group" "lab6_sg" {
 }
 
 
-resource "aws_instance" "lab6_security" {
+resource "aws_instance" "my_security" {
   ami           = "ami-0f403e3180720dd7e"
   instance_type = "t2.micro"
-  subnet_id      = aws_subnet.lab6_subnet.id  
+  subnet_id      = aws_subnet.my_subnet.id  
   tags = {
-    Name        = "Lab6-ec2"
+    Name        = "MY-instance"
     Owner       = "uday"
   }
 iam_instance_profile = aws_iam_instance_profile.example_profile.name
